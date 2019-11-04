@@ -14,9 +14,11 @@
 /**
 * bind on click event to idps icons
 */
-(function($){ 
+
+(function($){
 	$(function(){ 
 		$(document).on( 'click', 'a.wp-social-login-provider', function(){
+
 			popupurl = $( '#wsl_popup_base_url' ).val();
 
 			provider = $(this).attr("data-provider");
@@ -26,8 +28,10 @@
 			var top    = ( screen.height / 2 ) - ( height / 2 ) - 50;
 			var left   = ( screen.width  / 2 ) - ( width  / 2 );
 
-			window.open( popupurl + 'provider=' + provider, 'hybridauth_social_sing_on', 'location=1,status=0,scrollbars=0,height=' + height + ',width=' + width + ',top=' + top + ',left=' + left);
+			window.open( popupurl + 'provider=' + provider, 'hybridauth_social_sing_on', 'location=1,status=0,scrollbars=0,height=' + height + ',width=' + width + ',top=' + top + ',left=' + left); //hybridauth_social_sing_on
+
 		});
+
 	});
 })(jQuery);
 

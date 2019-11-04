@@ -152,19 +152,18 @@ if( ! function_exists( 'wsl_render_return_from_provider_loading_screen' ) )
 				<?php
 					if( $wsl_settings_use_popup == 1 || ! $wsl_settings_use_popup ){
 						?>
-							if( window.opener )
-							{
-								window.opener.wsl_wordpress_social_login({
-									'action'   : 'wordpress_social_authenticated',
-									'provider' : '<?php echo $provider ?>'
-								});
+						if( 'undefined' !== typeof( window.opener.wsl_wordpress_social_login ) )
+						{
+							window.opener.wsl_wordpress_social_login({
+								'action'   : 'wordpress_social_authenticated',
+								'provider' : '<?php echo $provider ?>'
+							});
 
-								window.close();
-							}
-							else
-							{
-								document.loginform.submit();
-							}
+							window.close();
+						} else {
+							document.loginform.submit();
+							//window.close();
+						}
 						<?php
 					}
 					elseif( $wsl_settings_use_popup == 2 ){
